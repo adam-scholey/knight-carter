@@ -1,24 +1,72 @@
-# Carter & Knight
+# Carter & Knight — Professional Letting Services
 
-This repository hosts two versions of the site side by side:
+Full-stack Django letting agency website for landlords. PostgreSQL database, modern admin panel, Docker-ready.
 
-| Version | Description | Live URL |
-|---|---|---|
-| `v1/` | Original Knight & Carter residential sales website (legacy, preserved as-is) | https://adam-scholey.github.io/carter-knight/v1/ |
-| `v2/` | Carter & Knight letting agency rebuild (see `tasks/plan.md` for scope) | https://adam-scholey.github.io/carter-knight/v2/ |
+## Stack
 
-## Structure
+- **Backend:** Django 5.1, PostgreSQL 16, Gunicorn
+- **Frontend:** Django templates, Instrument Serif + Inter, vanilla JS
+- **Admin:** django-unfold (modern Material-style admin)
+- **Infrastructure:** Docker Compose (Django + Postgres + Nginx)
+
+## Quick Start
+
+```bash
+# 1. Start Docker
+docker compose up -d
+
+# 2. Create admin user
+docker compose exec web python manage.py createsuperuser
+
+# 3. Seed sample properties
+docker compose exec web python manage.py seed_properties
+
+# 4. Visit
+#    Site:  http://localhost
+#    Admin: http://localhost/admin/
+```
+
+## Local Dev (without Docker)
+
+```bash
+# Start Postgres container only
+docker compose up db -d
+
+# Create venv and install deps
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+
+# Run Django
+cd app
+python manage.py migrate
+python manage.py seed_properties
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+## Project Structure
 
 ```
-carter-knight/
-├── v1/          # legacy Knight & Carter sales site
-├── v2/          # new Carter & Knight letting agency site
-├── tasks/       # planning docs (plan.md, todo.md)
-└── .github/     # GitHub Pages deploy workflow
+├── app/                  # Django project
+│   ├── config/           # Settings, URLs, WSGI
+│   ├── properties/       # Property listings app
+│   ├── core/             # Contact form, enquiries
+│   ├── templates/        # HTML templates
+│   └── static/           # CSS, JS, images
+├── nginx/                # Nginx config
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+└── .env.example
 ```
 
-## Deployment
+## Features
 
-Hosted on GitHub Pages via `.github/workflows/pages.yml`. Any push to `main` redeploys the whole repository, so both `/v1` and `/v2` are served as sub-paths automatically.
-
-See `v1/README.md` for the legacy site's documentation and `tasks/plan.md` / `tasks/todo.md` for the v2 rebuild plan.
+- Property listings with search/filter (price, type, status, bedrooms)
+- Property detail pages with image gallery
+- Contact form that stores enquiries in the database
+- Landlord services page
+- Modern admin panel for managing properties and enquiries
+- Responsive design focused on landlord audience
+- Docker Compose for portable deployment

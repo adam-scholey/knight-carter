@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}For Landlords — Knight & Carter{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <h1>For Landlords</h1>
+    <p>Premium investment properties sourced, prepared, and ready to generate rental income from day one.</p>
+  </div>
+</section>
+
+<section class="services-detail">
+  <div class="container">
+    <div class="services-grid-large">
+      <div class="service-card-large">
+        <h3>High-Yield Properties</h3>
+        <p>Every property in our portfolio is selected for strong rental demand and competitive yields. We do the research so you don't have to.</p>
+        <ul>
+          <li>Properties in high-demand rental areas</li>
+          <li>Competitive purchase prices below market value</li>
+          <li>Proven rental yield potential</li>
+          <li>Full financial breakdown provided</li>
+        </ul>
+      </div>
+      <div class="service-card-large">
+        <h3>Ready to Let</h3>
+        <p>Our properties are refurbished and prepared to a lettable standard before sale. No renovation headaches — start earning from day one.</p>
+        <ul>
+          <li>Fully refurbished to modern standards</li>
+          <li>Compliant with all safety regulations</li>
+          <li>EPC, Gas Safety & EICR certificates included</li>
+          <li>Move-in ready for tenants immediately</li>
+        </ul>
+      </div>
+      <div class="service-card-large">
+        <h3>Simple Purchase Process</h3>
+        <p>We keep things straightforward. Clear pricing, full property details, and a transparent transaction from start to finish.</p>
+        <ul>
+          <li>No hidden fees or surprises</li>
+          <li>Full property survey and documentation</li>
+          <li>Solicitor recommendations available</li>
+          <li>Support through to completion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div class="cta-text">
+      <h2>Ready to Invest?</h2>
+      <p>Get in touch to discuss your investment goals or browse our current portfolio of available properties.</p>
+    </div>
+    <a href="{% url 'contact' %}" class="btn btn-primary">Enquire Now</a>
+  </div>
+</section>
+{% endblock %}

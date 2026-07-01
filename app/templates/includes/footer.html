@@ -1,0 +1,29 @@
+{% load static %}
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4>Knight & Carter</h4>
+      <p class="tagline">Property Investment Specialists</p>
+      <p>Premium investment properties sourced, refurbished, and ready to generate rental income for landlords.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Properties</h5>
+      <a href="{% url 'properties' %}">All Properties</a>
+      <a href="{% url 'properties' %}?status=available">Available Now</a>
+    </div>
+    <div class="footer-col">
+      <h5>Invest</h5>
+      <a href="{% url 'landlord_services' %}">For Landlords</a>
+      <a href="{% url 'about' %}">About Us</a>
+    </div>
+    <div class="footer-col">
+      <h5>Get in Touch</h5>
+      <a href="tel:+441943000000">01943 000 000</a>
+      <a href="mailto:hello@carterandknight.co.uk">hello@carterandknight.co.uk</a>
+      <span>Regional Letting Office</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Knight & Carter. All rights reserved.</p>
+  </div>
+</footer>

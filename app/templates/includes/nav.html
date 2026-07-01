@@ -1,0 +1,15 @@
+{% load static %}
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="{% url 'home' %}" class="nav-logo">Knight & Carter</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>Home</a></li>
+      <li><a href="{% url 'properties' %}" {% if request.resolver_match.url_name == 'properties' or request.resolver_match.url_name == 'property_detail' %}class="active"{% endif %}>Properties</a></li>
+      <li><a href="{% url 'landlord_services' %}" {% if request.resolver_match.url_name == 'landlord_services' %}class="active"{% endif %}>For Landlords</a></li>
+      <li><a href="{% url 'about' %}" {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>About</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>

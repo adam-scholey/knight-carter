@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% load property_tags %}
+
+{% block title %}Rentals — Knight & Carter{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <h1>Rental Properties</h1>
+    <p>Browse our current lettings. Use the filters to find your next home.</p>
+  </div>
+</section>
+
+<section class="properties-section">
+  <div class="container">
+    <!-- Filters -->
+    <form class="filter-bar" method="get" action="{% url 'properties' %}">
+      <select name="price">
+        <option value="">Any Price</option>
+        <option value="0-750" {% if current_price == "0-750" %}selected{% endif %}>Up to £750</option>
+        <option value="750-1000" {% if current_price == "750-1000" %}selected{% endif %}>£750 – £1,000</option>
+        <option value="1000-1500" {% if current_price == "1000-1500" %}selected{% endif %}>£1,000 – £1,500</option>
+        <option value="1500+" {% if current_price == "1500+" %}selected{% endif %}>£1,500+</option>
+      </select>
+      <select name="status">
+        <option value="">Any Status</option>
+        {% for value, label in status_choices %}
+        <option value="{{ value }}" {% if current_status == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <select name="type">
+        <option value="">Any Type</option>
+        {% for value, label in type_choices %}
+        <option value="{{ value }}" {% if current_type == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+
+    <!-- Results -->
+    <p class="results-count">{{ properties|length }} propert{{ properties|length|pluralize:"y,ies" }} found</p>
+
+    {% if properties %}
+    <div class="properties-grid">
+      {% for prop in properties %}
+      <a href="{% url 'property_detail' prop.pk %}" class="property-card">
+        {% if prop.images.first %}
+        <div class="property-img" style="background-image: url('{{ prop.images.first.image.url }}')"></div>
+        {% else %}
+        {% placeholder_image prop.pk as img_url %}
+        <div class="property-img" style="background-image: url('{{ img_url }}')"></div>
+        {% endif %}
+        <div class="property-info">
+          <div class="property-price">£{{ prop.price_pcm }} <span>pcm</span></div>
+          <h3>{{ prop.address }}</h3>
+          <p class="property-location">{{ prop.town }}</p>
+          <div class="property-meta">
+            <span>{{ prop.bedrooms }} bed</span>
+            <span>{{ prop.bathrooms }} bath</span>
+            {% if prop.sqft %}<span>{{ prop.sqft }} sq ft</span>{% endif %}
+          </div>
+          <span class="property-status status-{{ prop.status }}">{{ prop.get_status_display }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <p>No properties match your filters. Try adjusting your search.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

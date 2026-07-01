@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% load property_tags %}
+
+{% block title %}{{ property.address }}, {{ property.town }} — Knight & Carter{% endblock %}
+
+{% block content %}
+<section class="property-detail">
+  <div class="container">
+    <a href="{% url 'properties' %}" class="back-link">← Back to listings</a>
+
+    <!-- Image Gallery -->
+    <div class="property-gallery">
+      {% for img in property.images.all %}
+      <div class="gallery-img" style="background-image: url('{{ img.image.url }}')"></div>
+      {% empty %}
+      {% placeholder_image property.pk "1200&h=600" as img_url %}
+      <div class="gallery-img" style="background-image: url('{{ img_url }}')"></div>
+      {% endfor %}
+    </div>
+
+    <!-- Details -->
+    <div class="property-detail-grid">
+      <div class="property-detail-main">
+        <span class="property-status status-{{ property.status }}">{{ property.get_status_display }}</span>
+        <h1>{{ property.address }}</h1>
+        <p class="property-location">{{ property.town }}{% if property.postcode %}, {{ property.postcode }}{% endif %}</p>
+
+        <div class="property-price-large">£{{ property.price_pcm }} <span>per month</span></div>
+
+        <div class="property-specs">
+          <div class="spec">
+            <strong>{{ property.bedrooms }}</strong>
+            <span>Bedrooms</span>
+          </div>
+          <div class="spec">
+            <strong>{{ property.bathrooms }}</strong>
+            <span>Bathrooms</span>
+          </div>
+          {% if property.sqft %}
+          <div class="spec">
+            <strong>{{ property.sqft }}</strong>
+            <span>Sq Ft</span>
+          </div>
+          {% endif %}
+          <div class="spec">
+            <strong>{{ property.get_property_type_display }}</strong>
+            <span>Type</span>
+          </div>
+        </div>
+
+        {% if property.description %}
+        <div class="property-description">
+          <h3>About this property</h3>
+          <p>{{ property.description|linebreaksbr }}</p>
+        </div>
+        {% endif %}
+
+        <div class="property-extra">
+          {% if property.deposit %}
+          <p><strong>Deposit:</strong> £{{ property.deposit }}</p>
+          {% endif %}
+          <p><strong>Available:</strong> {{ property.available_date }}</p>
+        </div>
+      </div>
+
+      <aside class="property-sidebar">
+        <div class="enquiry-box">
+          <h3>Interested?</h3>
+          <p>Arrange a viewing or ask a question about this property.</p>
+          <a href="{% url 'contact' %}?property={{ property.address }}, {{ property.town }}" class="btn btn-primary btn-block">Arrange Viewing</a>
+          <a href="tel:+441943000000" class="btn btn-outline btn-block">Call Us</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

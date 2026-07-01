@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% load property_tags %}
+
+{% block title %}Knight & Carter | Investment Properties for Landlords{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero"{% if site_settings and site_settings.hero_image %} style="background: linear-gradient(180deg, rgba(27, 36, 32, 0.55) 0%, rgba(27, 36, 32, 0.7) 100%), url('{{ site_settings.hero_image.url }}') center/cover no-repeat;"{% endif %}>
+  <div class="hero-content">
+    <span class="hero-label">Property Investment Specialists</span>
+    <h1>{% if site_settings and site_settings.hero_title %}{{ site_settings.hero_title }}{% else %}Knight & Carter{% endif %}</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">{% if site_settings and site_settings.hero_subtitle %}{{ site_settings.hero_subtitle }}{% else %}Premium investment properties, handpicked for landlords.{% endif %}</p>
+    <div class="hero-actions">
+      <a href="{% url 'properties' %}" class="btn btn-primary">View Properties</a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Properties -->
+{% if featured_properties %}
+<section class="featured-section">
+  <div class="container">
+    <div class="section-header-split">
+      <div>
+        <span class="label">Available Now</span>
+        <h2>Featured Properties</h2>
+      </div>
+      <a href="{% url 'properties' %}" class="btn btn-outline">View All Properties</a>
+    </div>
+    <div class="properties-grid">
+      {% for prop in featured_properties %}
+      <a href="{% url 'property_detail' prop.pk %}" class="property-card">
+        {% if prop.images.first %}
+        <div class="property-img" style="background-image: url('{{ prop.images.first.image.url }}')"></div>
+        {% else %}
+        {% placeholder_image prop.pk as img_url %}
+        <div class="property-img" style="background-image: url('{{ img_url }}')"></div>
+        {% endif %}
+        <div class="property-info">
+          <div class="property-price">£{{ prop.price_pcm }} <span>pcm yield</span></div>
+          <h3>{{ prop.address }}</h3>
+          <p class="property-location">{{ prop.town }}</p>
+          <div class="property-meta">
+            <span>{{ prop.bedrooms }} bed</span>
+            <span>{{ prop.bathrooms }} bath</span>
+            {% if prop.sqft %}<span>{{ prop.sqft }} sq ft</span>{% endif %}
+          </div>
+          <span class="property-status status-{{ prop.status }}">{{ prop.get_status_display }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div class="cta-text">
+      <h2>Ready to Invest?</h2>
+      <p>Browse our current portfolio of available investment properties.</p>
+    </div>
+    <a href="{% url 'properties' %}" class="btn btn-primary">View Properties</a>
+  </div>
+</section>
+{% endblock %}

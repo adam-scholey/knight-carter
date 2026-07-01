@@ -1,0 +1,53 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.72.0"
+  },
+  "ReportID": "019f802a-a045-7581-b110-27ef5ef30abd",
+  "CreatedAt": "2026-07-20T16:35:05.0293608+01:00",
+  "ArtifactID": "sha256:8363f7a9bfaa2e0066f43335b072a28761746a32e9638a3af0bac78ebb49ad7a",
+  "ArtifactName": "c:/Users/adams/Documents/Projects/Knight \u0026 Carter",
+  "ArtifactType": "repository",
+  "Metadata": {
+    "RepoURL": "https://github.com/adam-scholey/carter-knight.git",
+    "Branch": "main",
+    "Commit": "1823843b5022ff8a6c7b17b50787550499653252",
+    "CommitMsg": "feat(v2): implement Phase 1-3 redesign - IA update, design tokens, page rebuild\n\nPhase 1 — Information Architecture:\n- Remove tenant-services.html from primary navigation\n- Archive tenant-services.html to pages/_archive/\n- Add tenant FAQ section to contact.html\n- Update all footer links from Tenant Services to Tenant FAQ\n- Rename Landlords nav label to For Landlords across all pages\n- Update README.md and context.md to reflect new page inventory\n\nPhase 2 — Design System Refresh:\n- Add modular type scale (--text-xs to --text-5xl, 1.25 ratio)\n- Add spacing scale (--space-1 to --space-9)\n- Darken --text-muted for WCAG AA contrast on cream backgrounds\n- Make navbar sticky with scroll shadow (navbar--scrolled class)\n- Modernise search form into elevated card with grid layout\n- Refresh property cards with clearer hierarchy and spacing tokens\n- Add reduced-motion media query for accessibility\n- Apply spacing tokens throughout all sections\n\nPhase 3 — Page-by-Page Rebuild:\n- Apply new design tokens to index.html, properties.html, landlord-services.html, contact.html, about.html\n- Remove solid class from navbar (now uses sticky scroll behavior)\n- Add FAQ section styles to contact.html\n- Update responsive breakpoints with spacing tokens\n- All JS hooks remain intact (search.js, main.js, admin.js, tenant-landlord.js)\n\nTODO placeholders remain untouched for client input.\nNo changes to v1 folder or admin panel structure.",
+    "Author": "AdamScholey25 \u003cadamscholey25@gmail.com\u003e",
+    "Committer": "AdamScholey25 \u003cadamscholey25@gmail.com\u003e"
+  },
+  "Results": [
+    {
+      "Target": "Dockerfile",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 19,
+        "Failures": 1
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Dockerfile Security Check",
+          "ID": "DS-0002",
+          "Title": "Image user should not be 'root'",
+          "Description": "Running containers with 'root' user can lead to a container escape situation. It is a best practice to run containers as non-root users, which can be done by adding a 'USER' statement to the Dockerfile.",
+          "Message": "Specify at least 1 USER command in Dockerfile with non-root user as argument",
+          "Namespace": "builtin.dockerfile.DS002",
+          "Query": "data.builtin.dockerfile.DS002.deny",
+          "Resolution": "Add 'USER \u003cnon root user name\u003e' line to the Dockerfile",
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/ds-0002",
+          "References": [
+            "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/",
+            "https://avd.aquasec.com/misconfig/ds-0002"
+          ],
+          "Status": "FAIL",
+          "CauseMetadata": {
+            "Provider": "Dockerfile",
+            "Service": "general"
+          }
+        }
+      ]
+    }
+  ]
+}
