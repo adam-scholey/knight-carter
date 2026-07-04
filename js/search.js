@@ -161,7 +161,6 @@ function buildCard(property, fromPagesDir) {
           >
         </div>
         ${badge}
-        <span class="card-image-hint">Hover for interior</span>
       </div>
       <div class="card-body">
         <p class="card-price">${formatPrice(property.price)}</p>
