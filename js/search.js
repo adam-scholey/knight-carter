@@ -32,7 +32,7 @@ const PROPERTIES = [
     type: "Semi-Detached",
     featured: true,
     description: "A charming three-bedroom semi-detached Victorian home just moments from Harrogate town centre. Immaculate throughout with a modern kitchen extension and landscaped garden.",
-    exteriorImage: "https://images.unsplash.com/photo-1600607687939-ce8a6d349a58?w=2400&q=90&auto=format&fit=crop",
+    exteriorImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2400&q=90&auto=format&fit=crop",
     interiorImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=2400&q=90&auto=format&fit=crop"
   },
   {
