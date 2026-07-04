@@ -33,7 +33,7 @@ PostgreSQL is a professional database system included with Fly.io. It handles mu
 Email Service: Gmail (Recommended for Starting)
 Gmail can be used to send emails when someone submits the contact form. It is free and simple to set up.
 
-Gmail Considerations
+Gmail Considerations: 
 Daily sending limit of approximately 500 emails
 Designed for personal use rather than high-volume business email
 Emails will appear to come from your personal Gmail address
@@ -58,20 +58,32 @@ PostgreSQL Database: This stores all property listings and contact form submissi
 
 Email Service: This sends email notifications when someone submits an enquiry through the contact form. Without an email service, you would not be notified when a potential client enquires about a property.
 
-Next Steps
 
-1. Create an account on Fly.io
-2. Set up the website and database on Fly.io
-3. Enable security on your Gmail account and generate an access password
-4. Build the backend system to process contact form submissions
-5. Connect the website to the backend system
-6. Deploy the complete solution to Fly.io
-7. Test the contact form to ensure emails are sent correctly
-8. Purchase the domain name knightandcarter.co.uk and configure it on Fly.io
-
-Security Measures
-
+Security Measures:
 The website will use secure connections (HTTPS) automatically at no additional cost
 Passwords and access keys will never be shared
 All form submissions will be validated before processing to prevent spam
 Emails will only be sent from your own website domain
+
+Future Things to Consider
+
+Admin Panel for Property Management
+Currently, updating property listings would require technical access to the database. In the future, we could build a secure admin panel that allows you to add, edit, or remove properties through a simple web interface. This would give you full control over the website content without needing technical assistance. The admin panel would be password-protected and only accessible to authorised staff.
+
+Online Payments via Stripe
+If you wish to accept payments or deposits through the website, we could integrate Stripe, a secure payment processing service. This would allow clients to pay for services or reserve properties online. Stripe charges a small fee per transaction (typically 1.4% plus 20p for UK cards). We would need to discuss how pricing would work, as property prices vary and may require custom payment arrangements.
+
+Client Registration and Login
+We could add a system for clients to create accounts, save favourite properties, and receive notifications when new properties matching their criteria become available. This would help build a client database and improve engagement.
+
+Property Alerts and Notifications
+Clients could sign up to receive email alerts when new properties are listed in specific areas or within certain price ranges. This would help potential buyers find suitable properties quickly.
+
+Virtual Tours and Video Integration
+We could add virtual tour videos or 360-degree photography to property listings, giving viewers a better sense of the property before arranging viewings.
+
+Document Management
+A secure area where clients can access documents related to their property purchase, such as brochures, floor plans, or legal documents, could be added for convenience.
+
+Analytics and Reporting
+We could add reporting tools to show which properties are receiving the most views, which areas generate the most enquiries, and other useful business intelligence to help with marketing decisions.
