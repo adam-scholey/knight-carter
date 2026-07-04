@@ -1,79 +1,77 @@
-Hosting Guide for Knight and Carter
+Hosting Proposal for Knight and Carter
 
-This guide explains how to host the Knight and Carter website when it has a backend and database, including how to send emails from the contact form.
+This document outlines the recommended hosting solution for the Knight and Carter website to enable the contact form and property management features.
 
-Current State
+Current Situation
 
-The website is currently a static site hosted on GitHub Pages. The contact form is visual only and does not send real emails. To make the contact form work, we need a backend server and an email service.
+The website is currently displayed as a static site. The contact form is visible but does not send real emails. To make the contact form functional and enable property management, we need to add a backend system and database.
 
-What We Need to Store in the Database
+What Data Will Be Stored
 
-We need to store the following data and here is why:
+Contact Form Enquiries
+Customer name, email address, phone number, type of enquiry, property of interest, message, and the date and time submitted.
+Purpose: This creates a permanent record of all enquiries so you can follow up with potential clients and track response times.
 
-Contact form submissions
-Name, email, phone number, type of enquiry, property of interest, message, date and time submitted
-Why: When someone fills out the contact form, we need to save their enquiry so you can follow up. This creates a record of all leads and allows you to track response times.
+Property Listings
+Property address, town, postcode, price, number of bedrooms, number of bathrooms, square footage, property type, description, photographs, and featured status.
+Purpose: Storing property information in a database allows you to add, edit, or remove properties easily without needing technical changes. It also enables visitors to search and filter properties by location, price, or size.
 
-Property listings
-Property address, town, postcode, price, number of bedrooms, number of bathrooms, square footage, property type, description, exterior image URL, interior image URL, whether it is featured on homepage
-Why: Storing property data in a database allows you to easily add, edit, and remove properties without changing any code. It also enables advanced search and filtering by area, price, or bedrooms.
-
-User accounts (optional, for future)
-Name, email, password, role (admin, staff, customer)
-Why: If you want to add a login system later for staff to manage properties or for customers to save favourite properties, you will need user accounts with different permission levels.
+User Accounts (Optional for Future)
+Staff names, email addresses, and access levels.
+Purpose: If you wish to add a login system later for staff to manage properties or for clients to save favourite properties, user accounts will be required.
 
 Recommended Hosting Solution
 
-For Knight and Carter, I recommend using Fly.io for all hosting needs. This keeps everything in one place and is simple to manage.
+I recommend using Fly.io for all hosting requirements. This service provides everything needed in one place and is straightforward to manage.
 
-Backend and Frontend: Fly.io
-Fly.io will host both the Python backend and the website frontend. It also includes the PostgreSQL database. It is easy to use and has a free tier to get started.
+Website and Database Hosting: Fly.io
+Fly.io will host the website and include the database system. It offers a free tier to get started and is reliable for business use.
 
 Database: PostgreSQL
-PostgreSQL is a professional database that comes included with Fly.io. It handles multiple users well and is reliable for business use.
+PostgreSQL is a professional database system included with Fly.io. It handles multiple visitors simultaneously and is widely used by businesses for its reliability.
 
-Email: Gmail (Recommended for starting)
-We will use Gmail to send emails from the contact form. This is the same email service used in the Tracker project and works well for small businesses. It is free and easy to set up.
+Email Service: Gmail (Recommended for Starting)
+Gmail can be used to send emails when someone submits the contact form. It is free and simple to set up.
 
-Gmail Limitations
-Sending limit of approximately 500 emails per day
-Not designed for high-volume business email
-Gmail may flag automated sending as suspicious
-Emails come from your personal Gmail address rather than a business address
+Gmail Considerations
+Daily sending limit of approximately 500 emails
+Designed for personal use rather than high-volume business email
+Emails will appear to come from your personal Gmail address
+Gmail may occasionally flag automated sending as suspicious activity
 
-Alternative Email Service: SendGrid (For professional setup)
-If you want a more professional email setup, SendGrid is a dedicated email service. It allows emails to come from a business address like info@knightandcarter.co.uk and has higher sending limits.
+Alternative Email Service: SendGrid (For Professional Setup)
+If you prefer a more professional email arrangement, SendGrid is a dedicated email service. It allows emails to be sent from a business address such as info@knightandcarter.co.uk and provides higher sending limits.
 Cost: Free tier allows 100 emails per day, paid plans from £12 per month
 
-Custom Domain: knightandcarter.co.uk
-You will need to purchase the domain name, which costs approximately £10-15 per year.
+Domain Name: knightandcarter.co.uk
+You will need to purchase the domain name, which typically costs £10-15 per year.
 
-Total Cost
-Monthly: £0 (using free tiers)
+Cost Summary
+Monthly: £0 (using free service tiers)
 Annual: £10-15 for the domain name
 
-Why We Need These Services
+Why These Services Are Required
 
-Fly.io: This hosts the backend server that processes the contact form, stores data in the database, and serves the website to visitors. Without this, the contact form cannot send emails or save information.
+Fly.io: This service hosts the website, processes contact form submissions, and stores all data in the database. Without this, the contact form cannot send emails or save information.
 
-PostgreSQL: This stores all the property listings and contact form submissions. Without a database, you would need to manually update property information in the code every time something changes.
+PostgreSQL Database: This stores all property listings and contact form submissions. Without a database, property information would need to be manually updated in the website code whenever changes are required.
 
-Gmail SMTP: This sends the emails when someone fills out the contact form. Without an email service, the form would not notify you when someone enquires about a property.
+Email Service: This sends email notifications when someone submits an enquiry through the contact form. Without an email service, you would not be notified when a potential client enquires about a property.
 
 Next Steps
 
 1. Create an account on Fly.io
-2. Set up the backend and frontend on Fly.io with PostgreSQL
-3. Enable two-factor authentication on your Gmail account and generate an app password
-4. Build the Python backend with contact form endpoint
-5. Update the website to send form data to the backend
-6. Deploy both the website and backend to Fly.io
-7. Test the contact form to ensure emails are sent
-8. Purchase the domain name knightandcarter.co.uk and set it up on Fly.io
+2. Set up the website and database on Fly.io
+3. Enable security on your Gmail account and generate an access password
+4. Build the backend system to process contact form submissions
+5. Connect the website to the backend system
+6. Deploy the complete solution to Fly.io
+7. Test the contact form to ensure emails are sent correctly
+8. Purchase the domain name knightandcarter.co.uk and configure it on Fly.io
 
-Security Notes
+Security Measures
 
-Always use HTTPS (this is free and automatic on all recommended services)
-Never share passwords or API keys with anyone
-The backend will validate all form data before processing to prevent spam
+The website will use secure connections (HTTPS) automatically at no additional cost
+Passwords and access keys will never be shared
+All form submissions will be validated before processing to prevent spam
 Emails will only be sent from your own website domain
