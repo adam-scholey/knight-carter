@@ -183,28 +183,11 @@ p {
 
 .nav-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--white);
-  letter-spacing: 0.03em;
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.nav-logo-name {
-  display: block;
+  letter-spacing: 0.05em;
   white-space: nowrap;
-}
-
-.nav-logo span {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-top: 2px;
 }
 
 .nav-links {
