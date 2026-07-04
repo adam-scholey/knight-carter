@@ -2,7 +2,7 @@
 
 Modern, elegant property website for Knight & Carter, Yorkshire's residential property specialists.
 
-**Live site**: [View on GitHub Pages](https://AdamScholey25.github.io/knight-carter)
+**Live site**: [View on GitHub Pages](https://adam-scholey.github.io/knight-carter)
 
 ## Pages
 
