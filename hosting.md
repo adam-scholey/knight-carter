@@ -24,19 +24,26 @@ Why: If you want to add a login system later for staff to manage properties or f
 
 Recommended Hosting Solution
 
-For Knight and Carter, I recommend using Fly.io for hosting. This is a reliable and simple hosting service that includes everything you need.
+For Knight and Carter, I recommend using Fly.io for all hosting needs. This keeps everything in one place and is simple to manage.
 
-Backend: Fly.io
-Fly.io will host the Python backend and include the PostgreSQL database. It is easy to use and has a free tier to get started.
+Backend and Frontend: Fly.io
+Fly.io will host both the Python backend and the website frontend. It also includes the PostgreSQL database. It is easy to use and has a free tier to get started.
 
 Database: PostgreSQL
 PostgreSQL is a professional database that comes included with Fly.io. It handles multiple users well and is reliable for business use.
 
-Email: Gmail
+Email: Gmail (Recommended for starting)
 We will use Gmail to send emails from the contact form. This is the same email service used in the Tracker project and works well for small businesses. It is free and easy to set up.
 
-Frontend: Netlify
-Netlify will host the website frontend. It is free, simple, and handles static websites perfectly.
+Gmail Limitations
+Sending limit of approximately 500 emails per day
+Not designed for high-volume business email
+Gmail may flag automated sending as suspicious
+Emails come from your personal Gmail address rather than a business address
+
+Alternative Email Service: SendGrid (For professional setup)
+If you want a more professional email setup, SendGrid is a dedicated email service. It allows emails to come from a business address like info@knightandcarter.co.uk and has higher sending limits.
+Cost: Free tier allows 100 emails per day, paid plans from £12 per month
 
 Custom Domain: knightandcarter.co.uk
 You will need to purchase the domain name, which costs approximately £10-15 per year.
@@ -47,25 +54,22 @@ Annual: £10-15 for the domain name
 
 Why We Need These Services
 
-Fly.io: This hosts the backend server that processes the contact form and stores data in the database. Without this, the contact form cannot send emails or save information.
+Fly.io: This hosts the backend server that processes the contact form, stores data in the database, and serves the website to visitors. Without this, the contact form cannot send emails or save information.
 
 PostgreSQL: This stores all the property listings and contact form submissions. Without a database, you would need to manually update property information in the code every time something changes.
 
 Gmail SMTP: This sends the emails when someone fills out the contact form. Without an email service, the form would not notify you when someone enquires about a property.
 
-Netlify: This hosts the website that visitors see. It delivers the pages quickly and securely.
-
 Next Steps
 
 1. Create an account on Fly.io
-2. Create an account on Netlify
-3. Set up the backend on Fly.io with PostgreSQL
-4. Enable two-factor authentication on your Gmail account and generate an app password
-5. Build the Python backend with contact form endpoint
-6. Update the website to send form data to the backend
-7. Deploy both the website and backend
-8. Test the contact form to ensure emails are sent
-9. Purchase the domain name knightandcarter.co.uk and set it up
+2. Set up the backend and frontend on Fly.io with PostgreSQL
+3. Enable two-factor authentication on your Gmail account and generate an app password
+4. Build the Python backend with contact form endpoint
+5. Update the website to send form data to the backend
+6. Deploy both the website and backend to Fly.io
+7. Test the contact form to ensure emails are sent
+8. Purchase the domain name knightandcarter.co.uk and set it up on Fly.io
 
 Security Notes
 
