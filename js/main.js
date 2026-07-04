@@ -4,22 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* --- Navbar scroll effect -------------------------------- */
-  const navbar = document.getElementById('navbar');
-
-  if (navbar) {
-    const onScroll = () => {
-      if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-
   /* --- Mobile nav toggle ----------------------------------- */
   const toggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
