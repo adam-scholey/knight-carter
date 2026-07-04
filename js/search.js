@@ -140,7 +140,7 @@ function formatPrice(price) {
 
 function buildCard(property, fromPagesDir) {
   const base = fromPagesDir ? '../' : '';
-  const contactHref = base + (fromPagesDir ? 'contact.html' : 'pages/contact.html');
+  const contactHref = base + (fromPagesDir ? 'pages/contact.html' : 'pages/contact.html');
   const badge = property.featured
     ? `<span class="card-badge featured">Featured</span>`
     : `<span class="card-badge">${property.type}</span>`;
