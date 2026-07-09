@@ -1,65 +1,24 @@
-# Knight & Carter — Residential Asset Management
+# Carter & Knight
 
-Modern, elegant property website for Knight & Carter, Yorkshire's residential property specialists.
+This repository hosts two versions of the site side by side:
 
-**Live site**: [View on GitHub Pages](https://adam-scholey.github.io/knight-carter)
+| Version | Description | Live URL |
+|---|---|---|
+| `v1/` | Original Knight & Carter residential sales website (legacy, preserved as-is) | https://adam-scholey.github.io/carter-knight/v1/ |
+| `v2/` | Carter & Knight letting agency rebuild (see `tasks/plan.md` for scope) | https://adam-scholey.github.io/carter-knight/v2/ |
 
-## Pages
+## Structure
 
-| Page | Description |
-|---|---|
-| `/index.html` | Homepage — hero search, services, featured properties |
-| `/pages/properties.html` | Full property listings with dropdown filters |
-| `/pages/about.html` | Company story and values |
-| `/pages/contact.html` | Contact form and office details |
-
-## Search
-
-Properties are searched by:
-- **Postcode District** dropdown (e.g., LS29 — Ilkley, HG1 — Harrogate)
-- **Minimum Bedrooms** dropdown (Any, 1+, 2+, 3+, 4+)
-
-Results update live when filters change. URL parameters are preserved for sharing (e.g., `?area=LS29&beds=3`).
-
-## Updating Properties
-
-All property data is in `js/search.js` in the `PROPERTIES` array. Each property has:
-
-```js
-{
-  id: 1,
-  address: "4 Woodland Drive",
-  town: "Ilkley",
-  postcode: "LS29 8AB",
-  district: "LS29",           // must match dropdown value
-  price: 485000,
-  bedrooms: 4,
-  bathrooms: 2,
-  sqft: 1850,
-  type: "Detached",
-  featured: true,             // shows on homepage
-  description: "...",
-  exteriorImage: "url...",    // Unsplash or own hosted image
-  interiorImage: "url..."     // shown on card hover
-}
 ```
-
-## Updating Contact Details
-
-Contact details are in three places — search for `TODO: Update with real contact details`:
-- `index.html` (footer)
-- `pages/properties.html` (footer)
-- `pages/about.html` (footer)
-- `pages/contact.html` (contact section + footer)
-
-## Tech Stack
-
-- **HTML5** — semantic markup
-- **CSS3** — custom design system, no framework
-- **Vanilla JavaScript** — no dependencies
-- **Google Fonts** — Playfair Display + Inter
-- **Unsplash CDN** — property photography (4K quality)
+carter-knight/
+├── v1/          # legacy Knight & Carter sales site
+├── v2/          # new Carter & Knight letting agency site
+├── tasks/       # planning docs (plan.md, todo.md)
+└── .github/     # GitHub Pages deploy workflow
+```
 
 ## Deployment
 
-Hosted on GitHub Pages. Any push to `main` updates the live site automatically.
+Hosted on GitHub Pages via `.github/workflows/pages.yml`. Any push to `main` redeploys the whole repository, so both `/v1` and `/v2` are served as sub-paths automatically.
+
+See `v1/README.md` for the legacy site's documentation and `tasks/plan.md` / `tasks/todo.md` for the v2 rebuild plan.
