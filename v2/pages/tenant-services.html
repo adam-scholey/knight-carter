@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tenant services from Carter & Knight — maintenance requests, rent payment information and tenancy support.">
+  <title>Tenant Services | Carter & Knight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=1">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar solid" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Carter &amp; Knight</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="properties.html">Rentals</a></li>
+        <li><a href="tenant-services.html" class="active">Tenants</a></li>
+        <li><a href="landlord-services.html">Landlords</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div>
+      <span class="label" style="display:block;margin-bottom:12px;">For Tenants</span>
+      <h1>Tenant Services</h1>
+      <p>Support throughout your tenancy — maintenance, rent and beyond</p>
+    </div>
+  </section>
+
+  <!-- Maintenance Request -->
+  <section class="about-intro">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-text fade-up">
+          <span class="label">Report an Issue</span>
+          <h2>Maintenance Requests</h2>
+          <p>If something in your home needs attention, let us know using the form and we will arrange a suitable contractor. For emergencies (gas leak, flooding, loss of power or total loss of heating in winter), please call our emergency line immediately rather than using this form.</p>
+          <p><strong>Emergency Maintenance Line:</strong> <a href="tel:+441943000001" style="color:var(--gold);">01943 000 001</a> (24 hours)</p>
+        </div>
+        <div class="contact-form-wrap fade-up">
+          <h3>Submit a Maintenance Request</h3>
+          <form id="maintenanceForm" novalidate>
+            <div class="form-group">
+              <label for="mtProperty">Property Address</label>
+              <input type="text" id="mtProperty" name="mtProperty" placeholder="e.g. 4 Woodland Drive, Riverside" required>
+            </div>
+            <div class="form-group">
+              <label for="mtUrgency">Urgency</label>
+              <select id="mtUrgency" name="mtUrgency">
+                <option value="routine">Routine (no rush)</option>
+                <option value="soon">Needs attention soon</option>
+                <option value="urgent">Urgent (within 24-48 hours)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mtDescription">Describe the Issue</label>
+              <textarea id="mtDescription" name="mtDescription" placeholder="What's wrong, where is it, and when did it start?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+              Submit Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rent & Rights -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="label">Your Tenancy</span>
+        <h2>Rent, Rights &amp; Responsibilities</h2>
+        <p>Everything you need to know about paying rent and what to expect during your tenancy.</p>
+        <span class="gold-line"></span>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card fade-up">
+          <div class="value-number">01</div>
+          <h3>Rent Payments</h3>
+          <p>Rent is collected by standing order on the date agreed in your tenancy agreement. Contact us if you anticipate any difficulty making a payment — we're here to help, not to catch you out.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">02</div>
+          <h3>Your Rights</h3>
+          <p>You have the right to a safe, well-maintained home, protection of your deposit in a government-approved scheme, and reasonable notice before any inspection or visit.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-number">03</div>
+          <h3>Your Responsibilities</h3>
+          <p>Please pay rent on time, report repairs promptly, keep the property reasonably clean, and let us know about any changes to who is living at the property.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Carter &amp; Knight</h4>
+        <p class="tagline">Professional Letting Services</p>
+        <p>Quality rental properties and full property management. Trusted by tenants, landlords and investors.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Rentals</h5>
+        <a href="properties.html">All Rentals</a>
+        <a href="properties.html?status=Available">Available Now</a>
+        <a href="properties.html?price=0-750">Up to £750 pcm</a>
+        <a href="properties.html?price=1500%2B">£1,500+ pcm</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="tenant-services.html">Tenant Services</a>
+        <a href="landlord-services.html">Landlord Services</a>
+        <span>Full Property Management</span>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <!-- TODO: Update with real contact details from client -->
+        <a href="tel:+441943000000">01943 000 000</a>
+        <a href="mailto:hello@carterandknight.co.uk">hello@carterandknight.co.uk</a>
+        <span>Regional Letting Office</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Carter &amp; Knight. All rights reserved.</p>
+      <p>Registered in England &amp; Wales</p>
+    </div>
+  </footer>
+
+  <script src="../js/search.js?v=1"></script>
+  <script src="../js/main.js?v=1"></script>
+  <script src="../js/tenant-landlord.js?v=1"></script>
+</body>
+</html>

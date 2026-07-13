@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Edit Property | Carter & Knight Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=1">
+</head>
+<body style="background:var(--cream);">
+
+  <!-- Admin Topbar -->
+  <div class="admin-topbar">
+    <div class="admin-topbar-inner">
+      <a href="../index.html" class="nav-logo" style="color:var(--white);">Carter &amp; Knight</a>
+      <span class="admin-topbar-label" id="pageLabel">Add Property</span>
+      <a href="dashboard.html" class="btn btn-outline" style="margin-left:auto;">Back to Dashboard</a>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:48px;padding-bottom:80px;max-width:760px;">
+    <div class="contact-form-wrap fade-up visible">
+      <h3 id="formHeading">Add New Property</h3>
+      <form id="propertyForm" novalidate>
+        <input type="hidden" id="propertyId">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" placeholder="e.g. 4 Woodland Drive" required>
+          </div>
+          <div class="form-group">
+            <label for="town">Town / Area Name</label>
+            <input type="text" id="town" placeholder="e.g. Riverside" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pricePcm">Rent (£ pcm)</label>
+            <input type="number" id="pricePcm" min="0" step="5" required>
+          </div>
+          <div class="form-group">
+            <label for="deposit">Deposit (£)</label>
+            <input type="number" id="deposit" min="0" step="1" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fees">Fees Note</label>
+          <input type="text" id="fees" placeholder="e.g. No admin fees — deposit capped at 5 weeks' rent">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bedrooms">Bedrooms</label>
+            <input type="number" id="bedrooms" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="bathrooms">Bathrooms</label>
+            <input type="number" id="bathrooms" min="0" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sqft">Square Footage</label>
+            <input type="number" id="sqft" min="0" required>
+          </div>
+          <div class="form-group">
+            <label for="type">Property Type</label>
+            <select id="type">
+              <option value="Detached">Detached</option>
+              <option value="Semi-Detached">Semi-Detached</option>
+              <option value="Terraced">Terraced</option>
+              <option value="Flat">Flat</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="Available">Available</option>
+              <option value="Let Agreed">Let Agreed</option>
+              <option value="Under Offer">Under Offer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="availableDate">Availability Note</label>
+            <input type="text" id="availableDate" placeholder="e.g. Available Now">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="featured">
+            <input type="checkbox" id="featured" style="width:auto;display:inline-block;margin-right:8px;">
+            Show on homepage (Featured)
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Property description shown on the listing"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="exteriorImageUrl">Exterior Image URL</label>
+            <input type="text" id="exteriorImageUrl" placeholder="https://... or upload below">
+            <input type="file" id="exteriorImageUpload" accept="image/*" style="margin-top:8px;">
+          </div>
+          <div class="form-group">
+            <label for="interiorImageUrl">Interior Image URL</label>
+            <input type="text" id="interiorImageUrl" placeholder="https://... or upload below">
+            <input type="file" id="interiorImageUpload" accept="image/*" style="margin-top:8px;">
+          </div>
+        </div>
+
+        <p id="formError" style="color:#c0392b;font-size:13px;margin-bottom:16px;display:none;"></p>
+
+        <div style="display:flex;gap:12px;">
+          <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;">Save Property</button>
+          <a href="dashboard.html" class="btn btn-outline-dark" style="flex:1;justify-content:center;">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/search.js?v=1"></script>
+  <script src="../js/admin.js?v=1"></script>
+  <script>
+    requireAuth();
+
+    const params = new URLSearchParams(window.location.search);
+    const editId = params.get('id') ? parseInt(params.get('id')) : null;
+
+    if (editId) {
+      const existing = getPropertyById(editId);
+      if (existing) {
+        document.getElementById('pageLabel').textContent = 'Edit Property';
+        document.getElementById('formHeading').textContent = 'Edit Property';
+        document.getElementById('propertyId').value = existing.id;
+        document.getElementById('address').value = existing.address;
+        document.getElementById('town').value = existing.town;
+        document.getElementById('pricePcm').value = existing.pricePcm;
+        document.getElementById('deposit').value = existing.deposit;
+        document.getElementById('fees').value = existing.fees || '';
+        document.getElementById('bedrooms').value = existing.bedrooms;
+        document.getElementById('bathrooms').value = existing.bathrooms;
+        document.getElementById('sqft').value = existing.sqft;
+        document.getElementById('type').value = existing.type;
+        document.getElementById('status').value = existing.status;
+        document.getElementById('availableDate').value = existing.availableDate || '';
+        document.getElementById('featured').checked = !!existing.featured;
+        document.getElementById('description').value = existing.description || '';
+        document.getElementById('exteriorImageUrl').value = existing.exteriorImage || '';
+        document.getElementById('interiorImageUrl').value = existing.interiorImage || '';
+      }
+    }
+
+    function wireImageUpload(uploadId, urlId) {
+      document.getElementById(uploadId).addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        fileToBase64(file, (err, base64) => {
+          if (!err) document.getElementById(urlId).value = base64;
+        });
+      });
+    }
+    wireImageUpload('exteriorImageUpload', 'exteriorImageUrl');
+    wireImageUpload('interiorImageUpload', 'interiorImageUrl');
+
+    document.getElementById('propertyForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const errorEl = document.getElementById('formError');
+      const address = document.getElementById('address').value.trim();
+      const town = document.getElementById('town').value.trim();
+      const pricePcm = parseFloat(document.getElementById('pricePcm').value);
+      const deposit = parseFloat(document.getElementById('deposit').value);
+      const bedrooms = parseInt(document.getElementById('bedrooms').value);
+      const bathrooms = parseInt(document.getElementById('bathrooms').value);
+      const sqft = parseInt(document.getElementById('sqft').value);
+      const exteriorImage = document.getElementById('exteriorImageUrl').value.trim();
+      const interiorImage = document.getElementById('interiorImageUrl').value.trim();
+
+      if (!address || !town || isNaN(pricePcm) || isNaN(deposit) || isNaN(bedrooms) || isNaN(bathrooms) || isNaN(sqft) || !exteriorImage || !interiorImage) {
+        errorEl.textContent = 'Please fill in all required fields, including both images.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      const idField = document.getElementById('propertyId').value;
+      const property = {
+        id: idField ? parseInt(idField) : nextPropertyId(),
+        address,
+        town,
+        area: town.toUpperCase().replace(/\s+/g, '_'),
+        pricePcm,
+        deposit,
+        fees: document.getElementById('fees').value.trim(),
+        bedrooms,
+        bathrooms,
+        sqft,
+        type: document.getElementById('type').value,
+        status: document.getElementById('status').value,
+        availableDate: document.getElementById('availableDate').value.trim() || document.getElementById('status').value,
+        featured: document.getElementById('featured').checked,
+        description: document.getElementById('description').value.trim(),
+        exteriorImage,
+        interiorImage
+      };
+
+      upsertProperty(property);
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>

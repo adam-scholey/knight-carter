@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search rental properties with Carter & Knight. Filter by price range, availability and property type.">
+  <title>Rentals | Carter & Knight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=1">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Carter &amp; Knight</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="properties.html" class="active">Rentals</a></li>
+        <li><a href="landlord-services.html">For Landlords</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div>
+      <span class="label" style="display:block;margin-bottom:12px;">Available Now</span>
+      <h1>Rentals</h1>
+      <p>Search our current portfolio of managed rental homes</p>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="results-section">
+    <div class="container">
+
+      <!-- Toolbar -->
+      <div class="results-toolbar">
+        <p class="results-count" id="resultsCount">Loading&hellip;</p>
+        <form class="filter-form" id="filterForm">
+          <label for="priceFilter">Price</label>
+          <select id="priceFilter" class="filter-select" aria-label="Filter by rental price range">
+            <option value="ALL">Any Price</option>
+            <option value="0-750">Up to £750 pcm</option>
+            <option value="750-1000">£750 – £1,000 pcm</option>
+            <option value="1000-1500">£1,000 – £1,500 pcm</option>
+            <option value="1500+">£1,500+ pcm</option>
+          </select>
+
+          <label for="statusFilter">Availability</label>
+          <select id="statusFilter" class="filter-select" aria-label="Filter by availability status">
+            <option value="ALL">Any</option>
+            <option value="Available">Available</option>
+            <option value="Let Agreed">Let Agreed</option>
+            <option value="Under Offer">Under Offer</option>
+          </select>
+
+          <label for="typeFilter">Type</label>
+          <select id="typeFilter" class="filter-select" aria-label="Filter by property type">
+            <option value="ALL">Any Type</option>
+            <option value="Detached">Detached</option>
+            <option value="Semi-Detached">Semi-Detached</option>
+            <option value="Terraced">Terraced</option>
+            <option value="Flat">Flat</option>
+          </select>
+        </form>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="results-grid" id="resultsGrid">
+        <!-- Populated by search.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Carter &amp; Knight</h4>
+        <p class="tagline">Professional Letting Services</p>
+        <p>Quality rental properties and full property management. Trusted by tenants, landlords and investors.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Rentals</h5>
+        <a href="properties.html">All Rentals</a>
+        <a href="properties.html?status=Available">Available Now</a>
+        <a href="properties.html?price=0-750">Up to £750 pcm</a>
+        <a href="properties.html?price=1500%2B">£1,500+ pcm</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="contact.html#tenant-faq">Tenant FAQ</a>
+        <a href="landlord-services.html">Landlord Services</a>
+        <span>Compliance Support</span>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <!-- TODO: Update with real contact details from client -->
+        <a href="tel:+441943000000">01943 000 000</a>
+        <a href="mailto:hello@carterandknight.co.uk">hello@carterandknight.co.uk</a>
+        <span>Regional Letting Office</span>
+        <a href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Carter &amp; Knight. All rights reserved.</p>
+      <p>Registered in England &amp; Wales</p>
+    </div>
+  </footer>
+
+  <script src="../js/search.js?v=1"></script>
+  <script src="../js/main.js?v=1"></script>
+</body>
+</html>
