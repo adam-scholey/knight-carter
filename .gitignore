@@ -26,3 +26,6 @@ pgdata/
 # OS
 .DS_Store
 Thumbs.db
+
+# Security reports
+reports/
